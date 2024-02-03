@@ -9,4 +9,10 @@ public class Trash {
 		this.nom = nomTrash;
 		this.idType = id;
 	}
+	
+	public Trash(String nomTrash, int id, String image) {
+		this.nom = nomTrash;
+		this.idType = id;
+		this.image = image;
+	}
 }
