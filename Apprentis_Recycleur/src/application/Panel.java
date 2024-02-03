@@ -42,7 +42,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		
 //		Image recyclage = image("bin1.jpeg");
 		
-		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		Graphics2D g2dImage = (Graphics2D) g2d.create(); 
 		g2dImage.translate(50, 50);
 //		g2dImage.drawImage(recyclage, 20, 
 //				20, null);
