@@ -39,7 +39,7 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		Panel panel = new Panel();
-		panel.setBounds(162, 31, 163, 151);
+		panel.setBounds(10, 10, 853, 484);
 		contentPane.add(panel);
 	}
 }
