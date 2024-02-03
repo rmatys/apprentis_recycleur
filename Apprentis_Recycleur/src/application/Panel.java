@@ -7,8 +7,9 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-public class Panel extends JPanel {
+public class Panel extends JPanel implements Runnable {
 	private boolean premiereFois = true;
+	private boolean enCoursAnim = false;
 
 	/**
 	 * Create the panel.
@@ -31,6 +32,23 @@ public class Panel extends JPanel {
 		if (premiereFois) {
 			initialization();
 		}
+	}
+	
+	@Override
+	public void run() {
+		
+	}
+	
+	public void demarrerAnim() {
+		if (!enCoursAnim) {
+			enCoursAnim = true;
+			Thread proc = new Thread(this);
+			proc.start();
+		}
+	}
+	
+	public void arreterAnim() {
+		enCoursAnim = false;
 	}
 
 }
