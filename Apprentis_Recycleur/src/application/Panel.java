@@ -8,6 +8,8 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel implements Runnable {
+	private static final long serialVersionUID = -3422389399040540538L;
+	
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
 
