@@ -39,9 +39,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	Image img_dojo;
 	Image img_box;
-	
+
 
 	public Systems systeme = new Systems();
+	public ArrayList<Trash> listeDechets = systeme.randomiser();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);

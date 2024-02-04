@@ -165,22 +165,24 @@ public class Systems {
 	}
 	
 	public void succes() {
-		donnees.incrementerScore(1);
+		donnees.incrementerScore(100);
 		donnees.enleverDechet();
 		donnees.sequence++;
 		if(donnees.sequence==5) {
 			donnees.setVies(donnees.getVies()+1);
 		}
 		if(donnees.sequence==10) {
-			
+			donnees.incrementerScore(500);
 		}
 		if(donnees.sequence==15) {
-		
+			donnees.incrementerScore(500);
+			donnees.setVies(donnees.getVies()+1);
 		}
 		if(donnees.sequence==20) {
-
+			donnees.setVies(donnees.getVies()+1);
 		}
 		if(donnees.sequence==25) {
+			donnees.incrementerScore(1000);
 		}
 	}
 	
