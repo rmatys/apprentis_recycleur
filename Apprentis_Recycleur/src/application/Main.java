@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import application.System;
+import application.Systems;
 
 public class Main extends JFrame {
 
@@ -44,6 +44,8 @@ public class Main extends JFrame {
 		panel.setBounds(10, 10, 853, 484);
 		contentPane.add(panel);
 		
-		System.ajouterPoubelles();
+		Systems.ajouterPoubelles(panel, 1);
+		
+		Systems.ajouterTrash(panel);
 	}
 }

@@ -8,15 +8,22 @@ import java.awt.RenderingHints;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import objets.Poubelles;
+import objets.Trash;
 
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
 	
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
+	
+	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
+	public Trash trashAJeter = new Trash("", -1);
 
 	/**
 	 * Create the panel.
@@ -27,7 +34,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	}
 	
 	private void initialization() {
-		
+		premiereFois = false;
 	}
 	
 	@Override
@@ -40,12 +47,13 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			initialization();
 		}
 		
-//		Image recyclage = image("bin1.jpeg");
+		g2d.translate(0, getHeight());
 		
-		Graphics2D g2dImage = (Graphics2D) g2d.create(); 
-		g2dImage.translate(50, 50);
-//		g2dImage.drawImage(recyclage, 20, 
-//				20, null);
+		for (int i = 0; i < listPoubelles.size(); i++) {
+			listPoubelles.get(i).dessiner(g2d);
+		}
+		
+		trashAJeter.dessiner(g2d);
 	}
 	
 	@Override
