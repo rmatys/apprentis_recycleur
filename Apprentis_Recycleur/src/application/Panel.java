@@ -31,6 +31,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean falling = false;
 
 	private int iterDepuisChute = 0;
+	
+	public Systems systeme = new Systems();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
@@ -83,10 +85,11 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			initialization();	
 		}
 
-		int redimX = 70;//
-		int redimY = 90;//
-		Graphics2D g2dImage = (Graphics2D) g2d.create();//
-		g2dImage.translate(40, getHeight() - redimY - 25);//
+		int redimX = 70;
+		int redimY = 90;
+		
+		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		g2dImage.translate(35, getHeight() - redimY - 35);
 		
 		g2d.translate(0, getHeight());
 
@@ -95,7 +98,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			g2d.drawString(listPoubelles.get(i).getNom(), 45+(i*140), 645);
 		}
 
-		g2d.translate(0, getHeight());	
 		for (int j = 0; j < listPoubelles.size(); j++) {
 			Poubelles poubelle = listPoubelles.get(j);
 			Point2D.Double p = trashAJeter.getPoint();
@@ -106,8 +108,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
 
 			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".jpeg", redimX, redimY);
-
-			g2dImage.translate(20 * j, 0);
+			
+			if (j != 0) {
+				g2dImage.translate(140, 0);
+			}
 			g2dImage.drawImage(img, null, getFocusCycleRootAncestor());
 			
 

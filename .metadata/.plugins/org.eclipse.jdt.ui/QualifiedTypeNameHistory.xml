@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="application.System"/>
+    <fullyQualifiedTypeName name="application.System.TypeDechet"/>
+    <fullyQualifiedTypeName name="application.Systems.TypeDechet"/>
+    <fullyQualifiedTypeName name="application.Systems.TypePoubelle"/>
+    <fullyQualifiedTypeName name="objets.Poubelles"/>
+    <fullyQualifiedTypeName name="objets.Trash"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.nio.file.Path"/>
+    <fullyQualifiedTypeName name="java.nio.file.Paths"/>
+    <fullyQualifiedTypeName name="java.nio.file.Files"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

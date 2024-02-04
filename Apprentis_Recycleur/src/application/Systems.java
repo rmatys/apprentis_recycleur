@@ -1,6 +1,11 @@
 package application;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 import objets.*;
 
@@ -17,9 +22,69 @@ public class Systems {
         BIO, VERRE, CARTON, PLASTIQUE, ELECTRONIQUE, METAL, DECHET;
     }
 	
-	public static int nbrTrashAjouter = 0;
+	public int nbrTrashAjouter = 0;
 	
-	public static void ajouterPoubelles(Panel pan, int nbrPoubelles) {
+	public ArrayList<Trash> dechetsTableau = new ArrayList<>(); 
+	
+    Path pathDatabase = Paths.get("..\\Apprentis_Recycleur\\src\\application\\Database.txt");
+	String[] tableau;
+    TypeDechet type;
+    {
+	try {
+		List<String> DechetsStr = Files.readAllLines(pathDatabase);
+	    for (String s : DechetsStr) {
+	        tableau = s.split("\t");
+	        
+	        switch(tableau[1]) {
+	        case "BATTERIE":{
+				type = TypeDechet.BATTERIE;
+			}
+	        case "VETEMENTS":{
+				type = TypeDechet.VETEMENTS;
+			}
+	        case "PAPIER":{
+				type = TypeDechet.PAPIER;
+			}
+	        case "NOURRITURE_DECHET":{
+				type = TypeDechet.NOURRITURE_DECHET;
+			}
+			case "BIO":{
+				type = TypeDechet.BIO;
+			}
+			case "VERRE":{
+				type = TypeDechet.VERRE;
+			}
+			case "CARTON":{
+				type = TypeDechet.CARTON;
+			}
+			case "PLASTIQUE_MOU":{
+				type = TypeDechet.PLASTIQUE_MOU;
+			}
+			case "PLASTIQUE_DUR":{
+				type = TypeDechet.PLASTIQUE_DUR;
+			}
+			case "ORDINATEUR":{
+				type = TypeDechet.ORDINATEUR;
+			}
+			case "METAL":{
+				type = TypeDechet.METAL;
+			}
+			case "DECHET":{
+				type = TypeDechet.DECHET;
+			}
+			}
+	       
+	        dechetsTableau.add(new Trash(tableau[0], type));
+
+	    }
+	    
+	}
+	catch(IOException e) {
+		System.out.println("Database pas trouvee");
+    }
+    }
+	
+	public void ajouterPoubelles(Panel pan, int nbrPoubelles) {
 		for(TypePoubelle type: TypePoubelle.values()) {
 			Poubelles poubelle = new Poubelles("bin" + type.ordinal(), type);
 			pan.listPoubelles.add(poubelle);
@@ -110,7 +175,7 @@ public class Systems {
 		donnees.enleverDechet();
 	}
 
-	public static void ajouterTrash(Panel pan) {
+	public  void ajouterTrash(Panel pan) {
 		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);
 		pan.trashAJeter = trash;
 		

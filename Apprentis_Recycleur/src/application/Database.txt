@@ -1,0 +1,48 @@
+PileAA	BATTERIE
+PileAAA	BATTERIE
+Batterie de telephone	BATTERIE
+Batterie de voiture	BATTERIE
+Epluchures	BIO
+Coquilles d'oeufs	BIO
+Pain	BIO
+Mouchoir	BIO
+Bouteille	VERRE
+Vase	VERRE
+Pot de confiture	VERRE
+Becher	VERRE
+Boite Amazon	CARTON
+Meuble en carton	CARTON
+Essuie-tout	CARTON
+Gobelet jetable	CARTON
+Chandail	VETEMENTS
+Jeans	VETEMENTS
+Boxers	VETEMENTS
+Chaussettes	VETEMENTS
+Cannette de Coke	METAL
+Ferraille	METAL
+Capsule de bouteille	METAL
+Fils de courant	METAL
+Vieux journal	PAPIER
+Enveloppe	PAPIER
+Cahier de notes	PAPIER
+Junk mail	PAPIER
+Jouet en plastique	PLASTIQUE_DUR
+Bouteille de Tropicana	PLASTIQUE_DUR
+Tupperware	PLASTIQUE_DUR
+Boite de DVD	PLASTIQUE_DUR
+Laptop HP	ORDINATEUR
+Nintendo Wii	ORDINATEUR
+iPad Air 2	ORDINATEUR
+Casque ecouteur	ORDINATEUR
+Recu de caisse	DECHET
+Gants en plastique	DECHET
+Lingette humide	DECHET
+Megot de cigarette	DECHET
+Sac en plastique	PLASTIQUE_MOU
+Feuille de plastique	PLASTIQUE_MOU
+Sac de congelation	PLASTIQUE_MOU
+Emballage de produit electronique	PLASTIQUE_MOU
+Os de poulet	NOURRITURE_DECHET
+Steak	NOURRITURE_DECHET
+Yogurt	NOURRITURE_DECHET
+Saumon	NOURRITURE_DECHET
