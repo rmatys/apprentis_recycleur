@@ -135,6 +135,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				//				poubelle.getId();
 				trashAJeter.setPoint(1070, 200);
 				arretAnim();
+			} else if (p.y < poubelle.getRectangle().y) {
+				trashAJeter.setPoint(1070, 200);
+				arretAnim();
 			}
 		}
 		
