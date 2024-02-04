@@ -37,12 +37,16 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private int dechetsRest=25;
 	private int iterDepuisChute = 0;
 	
+	Image img_dojo;
+	Image img_box;
+
+
 	public Systems systeme = new Systems();
-	
 	public ArrayList<Trash> listeDechets = systeme.randomiser();
 
-	public ArrayList<Poubelles> listPoubelles = new ArrayList<>();
+	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
+	private Color pale =new Color(242,239,222);
 
 	/**
 	 * Create the panel.
@@ -80,6 +84,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 	private void initialization() {
 		premiereFois = false;
+		
+		// Caroline Houle professeur en SIM au collège de Maisonneuve
+		img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
+		img_box = OutilsImage.lireImageEtRedimensionner("box.png", 150, 150);
 	}
 
 	@Override
@@ -91,20 +99,16 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		if (premiereFois) {
 			initialization();	
 		}
-		
-		// Caroline Houle professeur en SIM au collège de Maisonneuve
-		Image img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
+
 		g2d.drawImage(img_dojo, null, getFocusCycleRootAncestor());
 		
-		// Caroline Houle professeur en SIM au collège de Maisonneuve
 		Graphics2D g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(1000, 500);
-		Image img_box = OutilsImage.lireImageEtRedimensionner("box.png", 150, 150);
 		g2dImage.drawImage(img_box, null, getFocusCycleRootAncestor());
 
 		int redimX = 70;
 		int redimY = 90;
-		
+
 		g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
 		
@@ -126,24 +130,30 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
 			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".png", redimX, redimY);
-			
+
 			if (j != 0) {
 				g2dImage.translate(140, 0);
 			}
 			g2dImage.drawImage(img, null, getFocusCycleRootAncestor());
-			
+
 
 			if (poubelle.getRectangle().intersects(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
 				trashAJeter.setPoint(1070, 200);
-				systeme.verifierCompatibilite(poubelle, trashAJeter);
+				arretAnim();
+			} else if (p.y < poubelle.getRectangle().y) {
+				trashAJeter.setPoint(1070, 200);
 				arretAnim();
 			}
 		}
-		
-		g2d.translate(0, -getHeight());	
-		
-		g2d.setColor(Color.white);
+
+		trashAJeter.dessiner(g2d);
+		g2d.translate(0, -getHeight());
+		g2d.setColor(pale);
+		g2d.setFont(new Font("Eras Demi ITC", Font.BOLD, 25));
+		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),380,50);
+
+		g2d.setFont(new Font("Eras Demi ITC", Font.PLAIN, 21));
 		g2d.drawString("Score : "+score, 50, 45);
 		g2d.drawString("Vies : "+ nbrVies, 50, 80);
 		g2d.drawString("Déchets restants : "+dechetsRest, 50, 115);
@@ -184,11 +194,14 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		enCoursAnim = false;
 		falling = false;
 		iterDepuisChute = 0;
+		
+		repaint();
 	}
 
 	public void afficherScores(Systems systeme) {
 		score=systeme.donnees.getScore();
 		nbrVies=systeme.donnees.getVies();
 		dechetsRest=systeme.donnees.getRestants();
+		
 	}
 }
