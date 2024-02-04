@@ -21,7 +21,7 @@ public class Systems {
 	
 	public static void ajouterPoubelles(Panel pan, int nbrPoubelles) {
 		for(TypePoubelle type: TypePoubelle.values()) {
-			Poubelles poubelle = new Poubelles("poubelle" + type.ordinal(), type);
+			Poubelles poubelle = new Poubelles("bin" + type.ordinal(), type);
 			pan.listPoubelles.add(poubelle);
 		}
 	}

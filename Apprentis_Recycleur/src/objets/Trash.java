@@ -24,7 +24,7 @@ public class Trash implements Selectionnable, Dessinable {
 		this.nom = nomTrash;
 		this.idType = id;
 		
-		point = new Point2D.Double(700, 400);
+		point = new Point2D.Double(500, 600);
 	}
 	
 	public Trash(String nomTrash, Systems.TypeDechet id, String image) {
