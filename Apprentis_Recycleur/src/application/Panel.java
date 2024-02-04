@@ -120,7 +120,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 		trashAJeter.dessiner(g2d);
 		g2d.translate(0, -getHeight());	
-	//	g2d.setFont(new Font("Arial"),12, )
+		g2d.setFont(new Font("Arial", Font.PLAIN, 12));
 		g2d.drawString("Score : "+"3" /*donnees.getScore()*/, 50, 45);
 		g2d.drawString("Vies : "+ "3" /*donnees.getVies()*/, 50, 85);
 		g2d.drawString("Déchets restants : "+ "22", /* donnees.getRestants()*/ 50, 125);
