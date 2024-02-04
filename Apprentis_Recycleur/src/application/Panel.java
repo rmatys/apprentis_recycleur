@@ -19,17 +19,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Point2D;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
-	
+
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
 	private boolean dragging = false;
 	private boolean falling = false;
-	
+
 	private int iterDepuisChute = 0;
-	
+
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
 
@@ -41,7 +43,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				dragging = true;
-				
+
 				if (!falling) {
 					trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());				
 					repaint();
@@ -64,30 +66,36 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			}
 		});
 		setLayout(null);
-        setBackground(Color.gray);
+		setBackground(Color.gray);
 	}
-	
+
 	private void initialization() {
 		premiereFois = false;
 	}
-	
+
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		
+
 		if (premiereFois) {
-			initialization();
+			g2d.setColor(Color.white);
+			for(int i=0; i<listPoubelles.size();i++) {
+				g2d.drawString(listPoubelles.get(i).getNom(), 45+(i*140), 645);
+				initialization();	
+			}
 		}
-		
+	
+
+
 		g2d.translate(0, getHeight());
-		
+
 		for (int i = 0; i < listPoubelles.size(); i++) {
 			Poubelles poubelle = listPoubelles.get(i);
 			Point2D.Double p = trashAJeter.getPoint();
 			double d = trashAJeter.getDiametre();
-			
+
 			poubelle.dessiner(g2d);
 			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
@@ -95,28 +103,27 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				arretAnim();
 			}
 		}
-		
+
 		trashAJeter.dessiner(g2d);
-		
-		g2d.setColor(Color.yellow);
-		g2d.drawString("aaaaaaaaaaaaaaaaaaaaaaaa", 50, 50);
+
+
 	}
-	
+
 	@Override
 	public void run() {
 		while (enCoursAnim) {
 			double gravity = 1.7;
-			
+
 			Point2D.Double p = trashAJeter.getPoint();
 			trashAJeter.setPoint(p.x, p.y - gravity * iterDepuisChute);
 			iterDepuisChute += 1;
-			
+
 			if (p.y < 0) {
 				arretAnim();
 			}
-			
+
 			repaint();
-			
+
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
@@ -124,7 +131,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			}
 		}
 	}
-	
+
 	public void demarrerAnim() {
 		if (!enCoursAnim) {
 			enCoursAnim = true;
@@ -132,13 +139,13 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			proc.start();
 		}
 	}
-	
+
 	public void arretAnim() {
 		enCoursAnim = false;
 		falling = false;
 		iterDepuisChute = 0;
 	}
-	
+
 	public static Image image(String fichier) {
 		Image img = null;
 		URL urlFichier = Panel.class.getClassLoader().getResource(fichier);
@@ -147,8 +154,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return(img);
 	}
-
 }
