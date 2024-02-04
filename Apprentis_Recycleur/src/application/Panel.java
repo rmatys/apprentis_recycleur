@@ -80,6 +80,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		if (premiereFois) {
 			initialization();
 		}
+		int redimX = 70;
+		int redimY = 90;
+		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		g2dImage.translate(40, getHeight() - redimY - 25);
 		
 		g2d.translate(0, getHeight());
 		
@@ -91,9 +95,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			poubelle.dessiner(g2d);
 			
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
-			Image img = OutilsImage.lireImage("bin" + (poubelle.getId().ordinal() + 1) +".jpeg");
-			
-			g2d.drawImage(img, null, getFocusCycleRootAncestor());
+			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".jpeg", redimX, redimY);
+
+			g2dImage.translate(20 * i, 0);
+			g2dImage.drawImage(img, null, getFocusCycleRootAncestor());
 			
 			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
