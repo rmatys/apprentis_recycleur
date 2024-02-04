@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 
 import objets.Poubelles;
 import objets.Trash;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
@@ -29,6 +32,17 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	 * Create the panel.
 	 */
 	public Panel() {
+		addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				System.out.println(e.getX() + " " + e.getY());
+			}
+		});
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		setLayout(null);
         setBackground(Color.gray);
 	}
