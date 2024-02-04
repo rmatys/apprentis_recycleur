@@ -44,6 +44,6 @@ public class Main extends JFrame {
 		panel.setBounds(10, 10, 853, 484);
 		contentPane.add(panel);
 		
-		System.ajouterPoubelles(panel, 1);
+		System.ajouterPoubelles(panel, 3);
 	}
 }

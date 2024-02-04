@@ -22,6 +22,10 @@ public class Poubelles implements Selectionnable, Dessinable {
 	public Poubelles(String nomPoubelle, int id) {
 		this.nom = nomPoubelle;
 		this.idType = id;
+		
+		double initPosX = 2;
+		double initPosY = 2;
+		point = new Point2D.Double(initPosX + 4 * id, initPosY);
 	}
 	
 	public Poubelles(String nomPoubelle, int id, String image) {

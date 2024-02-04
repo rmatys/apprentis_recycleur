@@ -50,6 +50,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			initialization();
 		}
 		
+		g2d.translate(0, getHeight());
+		
 		for (int i = 0; i < listPoubelles.size(); i++) {
 			listPoubelles.get(i).dessiner(g2d, pixelsParMetre);
 		}
