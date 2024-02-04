@@ -18,8 +18,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 	public Systems.TypePoubelle idType;
 	public String image;
 	
-	private double largeur = 30;
-	private double hauteur = 30;
+	private double largeur = 70;
+	private double hauteur = 90;
 	private Point2D.Double point;
 	private Rectangle2D.Double rectangle = new Rectangle2D.Double();
 	
@@ -32,9 +32,9 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
-		double initPosX = 40;
-		double initPosY = 40;
-		point = new Point2D.Double(initPosX + 70 * id.ordinal(), initPosY);
+		double initPosX = 70;
+		double initPosY = 70;
+		point = new Point2D.Double(initPosX + 140 * id.ordinal(), initPosY);
 	}
 	
 	public void setNom(String nom) {
@@ -59,6 +59,10 @@ public class Poubelles implements Selectionnable, Dessinable {
 	
 	public String getImage() {
 		return this.image;
+	}
+	
+	public Rectangle2D.Double getRectangle() {
+		return this.rectangle;
 	}
 	
 	
