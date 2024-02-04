@@ -160,6 +160,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.drawString("Score : "+systeme.donnees.getScore(), 50, 45);
 		g2d.drawString("Vies : "+ systeme.donnees.getVies(), 50, 80);
 		g2d.drawString("Déchets restants : "+systeme.donnees.getRestants(), 50, 115);
+
 	}
 
 	@Override
