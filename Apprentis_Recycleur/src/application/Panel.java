@@ -39,7 +39,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	public Systems systeme = new Systems();
 	
-	public ArrayList<Trash> listeDechets;
+	public ArrayList<Trash> listeDechets = systeme.randomiser();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
