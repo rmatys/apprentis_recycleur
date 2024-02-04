@@ -24,6 +24,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
+	private boolean dragging = false;
 	
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
@@ -35,14 +36,23 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());
-				
+				dragging = true;
+				trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());				
 				repaint();
 			}
 		});
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());				
+				repaint();
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if (dragging) {
+					System.out.println("released");
+					dragging = false;
+				}
 			}
 		});
 		setLayout(null);
