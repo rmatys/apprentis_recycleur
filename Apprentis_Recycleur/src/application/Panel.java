@@ -59,7 +59,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			listPoubelles.get(i).dessiner(g2d, pixelsParMetre);
 		}
 		
-		trashAJeter.dessiner(g2d, pixelsParMetre); 
+		trashAJeter.dessiner(g2d, pixelsParMetre);
 	}
 	
 	@Override
