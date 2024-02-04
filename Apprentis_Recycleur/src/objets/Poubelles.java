@@ -31,8 +31,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
-		double initPosX = 40;
-		double initPosY = 40;
+		double initPosX = 400; // 40
+		double initPosY = 400;
 		point = new Point2D.Double(initPosX + 70 * id.ordinal(), initPosY);
 	}
 	
@@ -81,7 +81,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 		
 		g2dPrive.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		g2dPrive.setColor(Color.yellow);
-		g2dPrive.drawString("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", (int)point.getX(), (int)point.getY());
+		g2dPrive.drawString(this.nom, (int)point.getX(), (int)point.getY());
+		System.out.println(idType);
 	}
 
 	@Override

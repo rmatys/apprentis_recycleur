@@ -96,6 +96,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			
 			if (p.y < 0) {
 				enCoursAnim = false;
+				iterDepuisChute = 0;
 			}
 			
 			repaint();
