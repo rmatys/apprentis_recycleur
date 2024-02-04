@@ -75,7 +75,7 @@ public class Poubelles implements Selectionnable, Dessinable {
 		AffineTransform mat = new AffineTransform();
 		mat.scale(1, -1);
 		
-		g2dPrive.setColor(Color.black);
+		g2dPrive.setColor(new Color(255, 0, 0, 0));
 		
 		double l = largeur;
 		double h = hauteur;
