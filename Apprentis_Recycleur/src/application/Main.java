@@ -49,7 +49,6 @@ public class Main extends JFrame {
 		
 		systeme.ajouterPoubelles(panel, 1);
 		
-		systeme.ajouterTrash(panel);
 		panel.afficherScores(systeme);
 	}
 }

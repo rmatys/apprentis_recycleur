@@ -48,7 +48,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	public ArrayList<Trash> listeDechets = systeme.randomiser();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
-	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
+	public Trash trashAJeter = listeDechets.remove(0);
 	private Color pale =new Color(242,239,222);
 
 	/**
@@ -140,10 +140,15 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			
 			if (poubelle.getRectangle().intersects(p.x, p.y + d, d, d)) {
 				trashAJeter.setPoint(1070, 200);
+				systeme.verifierCompatibilite(poubelle, trashAJeter);
+				trashAJeter = listeDechets.remove(0);
 				arretAnim();
 			} else if (p.y < 0) {
+				systeme.verifierCompatibilite(poubelle, trashAJeter);
+				trashAJeter = listeDechets.remove(0);
 				arretAnim();
 			}
+			
 		}
 
 		g2d.translate(0, -getHeight());
@@ -152,9 +157,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),getWidth()/2-127,60);
 
 		g2d.setFont(new Font("Eras Demi ITC", Font.PLAIN, 21));
-		g2d.drawString("Score : "+score, 50, 45);
-		g2d.drawString("Vies : "+ nbrVies, 50, 80);
-		g2d.drawString("Déchets restants : "+dechetsRest, 50, 115);
+		g2d.drawString("Score : ", 50, 45);
+		g2d.drawString("Vies : ", 50, 80);
+		g2d.drawString("Déchets restants : ", 50, 115);
 	}
 
 	@Override
