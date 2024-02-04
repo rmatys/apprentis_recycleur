@@ -6,4 +6,9 @@
     <fullyQualifiedTypeName name="application.Systems.TypePoubelle"/>
     <fullyQualifiedTypeName name="objets.Poubelles"/>
     <fullyQualifiedTypeName name="objets.Trash"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.nio.file.Path"/>
+    <fullyQualifiedTypeName name="java.nio.file.Paths"/>
+    <fullyQualifiedTypeName name="java.nio.file.Files"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
