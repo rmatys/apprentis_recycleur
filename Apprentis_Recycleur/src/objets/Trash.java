@@ -81,14 +81,19 @@ public class Trash implements Selectionnable, Dessinable {
 		AffineTransform mat = new AffineTransform();
 		mat.scale(1, -1);
 		
-		g2dPrive.setColor(Color.black);
-		
 		double d = diametre;
 		double px = (point.getX()-d/2);
 		double py = (point.getY()-d/2);
 		
+		Ellipse2D.Double cercle2 = new Ellipse2D.Double(px - 0.5, py - 0.5, d + 1, d + 1);
+		g2dPrive.setColor(Color.white);
+		g2dPrive.fill(mat.createTransformedShape(cercle2));
+		
 		cercle = new Ellipse2D.Double(px, py, d, d);
+		g2dPrive.setColor(Color.darkGray);
 		g2dPrive.fill(mat.createTransformedShape(cercle));
+		
+		
 	}
 
 	@Override

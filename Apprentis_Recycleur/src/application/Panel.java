@@ -123,8 +123,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		}
 		g2d.translate(0, getHeight());
 		
-		g2d.translate(0, -100);
-		g2d.drawImage(img_trash, null, getFocusCycleRootAncestor());
 		trashAJeter.dessiner(g2d);
 
 		for (int j = 0; j < listPoubelles.size(); j++) {
