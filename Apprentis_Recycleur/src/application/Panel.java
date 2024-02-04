@@ -33,11 +33,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private int score=0;
 	private int dechetsRest=25;
 	private int iterDepuisChute = 0;
-	
+
 	public Systems systeme = new Systems();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
+	private Color pale =new Color(242,239,222);
 
 	/**
 	 * Create the panel.
@@ -86,18 +87,19 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		if (premiereFois) {
 			initialization();	
 		}
-		
+
 		// Caroline Houle professeur en SIM au collège de Maisonneuve
 		Image img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
 		g2d.drawImage(img_dojo, null, getFocusCycleRootAncestor());
 
 		int redimX = 70;
 		int redimY = 90;
-		
+
 		Graphics2D g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
-		
-		g2d.setColor(Color.white);
+
+		g2d.setColor(Color.black);
+		g2d.setFont(new Font("Arial", Font.BOLD, 13));
 		for (int i = 0; i < listPoubelles.size(); i++) {
 			g2d.drawString(listPoubelles.get(i).getNom(), 57+(i*140), 645);
 		}
@@ -113,12 +115,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
 			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".png", redimX, redimY);
-			
+
 			if (j != 0) {
 				g2dImage.translate(140, 0);
 			}
 			g2dImage.drawImage(img, null, getFocusCycleRootAncestor());
-			
+
 
 			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
@@ -128,8 +130,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		}
 
 		trashAJeter.dessiner(g2d);
-		g2d.translate(0, -getHeight());	
-		g2d.setFont(new Font("Arial", Font.PLAIN, 17));
+		g2d.translate(0, -getHeight());
+		g2d.setColor(pale);
+		g2d.setFont(new Font("Eras Demi ITC", Font.BOLD, 25));
+		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),380,50);
+
+		g2d.setFont(new Font("Eras Demi ITC", Font.PLAIN, 21));
 		g2d.drawString("Score : "+score, 50, 45);
 		g2d.drawString("Vies : "+ nbrVies, 50, 80);
 		g2d.drawString("Déchets restants : "+dechetsRest, 50, 115);
@@ -188,5 +194,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		score=systeme.donnees.getScore();
 		nbrVies=systeme.donnees.getVies();
 		dechetsRest=systeme.donnees.getRestants();
+		
 	}
 }
