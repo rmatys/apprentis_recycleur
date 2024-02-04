@@ -11,7 +11,7 @@ import application.System;
 public class Main extends JFrame {
 
 	private JPanel contentPane;
-
+//MAXENCE
 	/**
 	 * Launch the application.
 	 */
