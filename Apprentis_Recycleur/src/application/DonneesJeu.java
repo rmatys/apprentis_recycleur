@@ -1,5 +1,7 @@
 package application;
 
+import javax.swing.JOptionPane;
+
 public class DonneesJeu {
 
 	public int score = 0;
@@ -47,9 +49,19 @@ public class DonneesJeu {
 	
 	public void enleverVie() {
 		this.nbVies--;
+		
+		if (nbVies == 0) {
+			JOptionPane.showMessageDialog(null, score);
+			System.exit(0);
+		}
 	}
 	
 	public void enleverDechet() {
 		this.dechetsRestants--;
+		
+		if (dechetsRestants == 0) {
+			JOptionPane.showMessageDialog(null, score);
+			System.exit(0);
+		}
 	}
 }
