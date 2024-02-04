@@ -14,8 +14,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 	public int idType;
 	public String image;
 	
-	private double largeur = 10;
-	private double hauteur = 10;
+	private double largeur = 30;
+	private double hauteur = 30;
 	private Point2D.Double point;
 	private Rectangle2D.Double rectangle = new Rectangle2D.Double();
 	
@@ -23,8 +23,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
-		double initPosX = 20;
-		double initPosY = 20;
+		double initPosX = 60;
+		double initPosY = 60;
 		point = new Point2D.Double(initPosX + 4 * id, initPosY);
 	}
 	
@@ -59,18 +59,18 @@ public class Poubelles implements Selectionnable, Dessinable {
 	}
 
 	@Override
-	public void dessiner(Graphics2D g2d, double pixelsParMetre) {
+	public void dessiner(Graphics2D g2d) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();
 		
 		AffineTransform mat = new AffineTransform();
-		mat.scale(pixelsParMetre, -pixelsParMetre);
+		mat.scale(1, -1);
 		
 		g2dPrive.setColor(Color.black);
 		
-		double l = largeur / pixelsParMetre;
-		double h = hauteur / pixelsParMetre;
-		double px = (point.getX()-l/2) / pixelsParMetre;
-		double py = (point.getY()-h/2) / pixelsParMetre;
+		double l = largeur;
+		double h = hauteur;
+		double px = (point.getX()-l/2);
+		double py = (point.getY()-h/2);
 		
 		rectangle = new Rectangle2D.Double(px, py, l, h);
 		g2dPrive.fill(mat.createTransformedShape(rectangle));	

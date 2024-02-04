@@ -22,8 +22,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
 	
-	private double pixelsParMetre;
-	
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", -1);
 
@@ -37,10 +35,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	private void initialization() {
 		premiereFois = false;
-				
-		double largeurMetre = 20;
-		pixelsParMetre = getWidth() / largeurMetre;
-		System.out.println(pixelsParMetre);
 	}
 	
 	@Override
@@ -56,10 +50,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.translate(0, getHeight());
 		
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			listPoubelles.get(i).dessiner(g2d, pixelsParMetre);
+			listPoubelles.get(i).dessiner(g2d);
 		}
 		
-		trashAJeter.dessiner(g2d, pixelsParMetre);
+		trashAJeter.dessiner(g2d);
 	}
 	
 	@Override

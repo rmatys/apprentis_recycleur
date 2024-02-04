@@ -57,17 +57,17 @@ public class Trash implements Selectionnable, Dessinable {
 	}
 	
 	@Override
-	public void dessiner(Graphics2D g2d, double pixelsParMetre) {
+	public void dessiner(Graphics2D g2d) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();
 		
 		AffineTransform mat = new AffineTransform();
-		mat.scale(pixelsParMetre, -pixelsParMetre);
+		mat.scale(1, -1);
 		
 		g2dPrive.setColor(Color.black);
 		
-		double d = diametre / pixelsParMetre;
-		double px = (point.getX()-d/2) / pixelsParMetre;
-		double py = (point.getY()-d/2) / pixelsParMetre;
+		double d = diametre;
+		double px = (point.getX()-d/2);
+		double py = (point.getY()-d/2);
 		
 		cercle = new Ellipse2D.Double(px, py, d, d);
 		g2dPrive.fill(mat.createTransformedShape(cercle));
