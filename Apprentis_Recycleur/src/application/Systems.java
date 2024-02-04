@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import objets.*;
 
+
 public class Systems {
 	
 	public enum TypeDechet {
@@ -14,11 +15,19 @@ public class Systems {
         BIO, VERRE, CARTON, PLASTIQUE, ELECTRONIQUE, METAL, DECHET;
     }
 	
+	public static int nbrTrashAjouter = 0;
+	
 	public static void ajouterPoubelles(Panel pan, int nbrPoubelles) {
 		for(TypePoubelle type: TypePoubelle.values()) {
 			Poubelles poubelle = new Poubelles("poubelle" + type.ordinal(), type);
 			pan.listPoubelles.add(poubelle);
 		}
 	}
-	
+
+
+	public static void ajouterTrash(Panel pan) {
+		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);
+		pan.trashAJeter = trash;
+		
+	}
 }

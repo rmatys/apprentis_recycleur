@@ -15,7 +15,7 @@ public class Trash implements Selectionnable, Dessinable {
 	public Systems.TypeDechet idType;
 	public String image;
 	
-	private double diametre = 10;
+	private double diametre = 20;
 	private Point2D.Double point;
 	private Ellipse2D.Double cercle= new Ellipse2D.Double();
 	
@@ -23,6 +23,8 @@ public class Trash implements Selectionnable, Dessinable {
 	public Trash(String nomTrash, Systems.TypeDechet id) {
 		this.nom = nomTrash;
 		this.idType = id;
+		
+		point = new Point2D.Double(700, 400);
 	}
 	
 	public Trash(String nomTrash, Systems.TypeDechet id, String image) {
@@ -56,16 +58,19 @@ public class Trash implements Selectionnable, Dessinable {
 	}
 	
 	@Override
-	public void dessiner(Graphics2D g2d, double pixelsParMetre) {
+	public void dessiner(Graphics2D g2d) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();
 		
 		AffineTransform mat = new AffineTransform();
-		mat.scale(pixelsParMetre, -pixelsParMetre);
+		mat.scale(1, -1);
 		
 		g2dPrive.setColor(Color.black);
 		
-		double d = diametre / pixelsParMetre;
-		cercle = new Ellipse2D.Double(point.getX()-d/2, point.getY()-d/2, d, d);
+		double d = diametre;
+		double px = (point.getX()-d/2);
+		double py = (point.getY()-d/2);
+		
+		cercle = new Ellipse2D.Double(px, py, d, d);
 		g2dPrive.fill(mat.createTransformedShape(cercle));
 	}
 

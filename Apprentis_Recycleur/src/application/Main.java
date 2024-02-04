@@ -20,6 +20,7 @@ public class Main extends JFrame {
 			public void run() {
 				try {
 					Main frame = new Main();
+//					frame.setUndecorated(true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,9 +42,11 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		Panel panel = new Panel();
-		panel.setBounds(10, 10, 853, 484);
+		panel.setBounds(0, 0, getWidth(), getHeight() - 50);
 		contentPane.add(panel);
 		
-		Systems.ajouterPoubelles(panel, 3);
+		Systems.ajouterPoubelles(panel, 1);
+		
+		Systems.ajouterTrash(panel);
 	}
 }

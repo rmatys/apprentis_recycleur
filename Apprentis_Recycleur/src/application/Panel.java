@@ -14,6 +14,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import objets.Poubelles;
+import objets.Trash;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
@@ -21,23 +25,30 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
 	
-	private double pixelsParMetre;
-	
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
+	public Trash trashAJeter = new Trash("", -1);
 
 	/**
 	 * Create the panel.
 	 */
 	public Panel() {
+		addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				System.out.println(e.getX() + " " + e.getY());
+			}
+		});
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		setLayout(null);
         setBackground(Color.gray);
 	}
 	
 	private void initialization() {
 		premiereFois = false;
-				
-		double largeurMetre = 20;
-		pixelsParMetre = getWidth() / largeurMetre;
 	}
 	
 	@Override
@@ -53,8 +64,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.translate(0, getHeight());
 		
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			listPoubelles.get(i).dessiner(g2d, pixelsParMetre);
+			listPoubelles.get(i).dessiner(g2d);
 		}
+		
+		trashAJeter.dessiner(g2d);
 	}
 	
 	@Override
