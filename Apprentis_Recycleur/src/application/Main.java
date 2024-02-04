@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import application.Systems;
 import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Main extends JFrame {
 

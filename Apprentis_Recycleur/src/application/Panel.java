@@ -150,7 +150,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.translate(0, -getHeight());
 		g2d.setColor(pale);
 		g2d.setFont(new Font("Eras Demi ITC", Font.BOLD, 25));
-		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),380,50);
+		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),getWidth()/2-127,60);
 
 		g2d.setFont(new Font("Eras Demi ITC", Font.PLAIN, 21));
 		g2d.drawString("Score : "+score, 50, 45);
