@@ -8,10 +8,11 @@ import java.awt.geom.Point2D;
 
 import interfaces.Dessinable;
 import interfaces.Selectionnable;
+import application.Systems;
 
 public class Trash implements Selectionnable, Dessinable {
 	public String nom;
-	public int idType;
+	public Systems.TypeDechet idType;
 	public String image;
 	
 	private double diametre = 10;
@@ -19,12 +20,12 @@ public class Trash implements Selectionnable, Dessinable {
 	private Ellipse2D.Double cercle= new Ellipse2D.Double();
 	
 	
-	public Trash(String nomTrash, int id) {
+	public Trash(String nomTrash, Systems.TypeDechet id) {
 		this.nom = nomTrash;
 		this.idType = id;
 	}
 	
-	public Trash(String nomTrash, int id, String image) {
+	public Trash(String nomTrash, Systems.TypeDechet id, String image) {
 		this.nom = nomTrash;
 		this.idType = id;
 		this.image = image;
@@ -38,11 +39,11 @@ public class Trash implements Selectionnable, Dessinable {
 		return this.nom;
 	}
 	
-	public void setId(int id) {
+	public void setId(Systems.TypeDechet id) {
 		this.idType = id;
 	}
 	
-	public int getId() {
+	public Systems.TypeDechet getId() {
 		return this.idType;
 	}
 	

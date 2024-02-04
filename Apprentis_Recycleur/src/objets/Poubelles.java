@@ -8,10 +8,11 @@ import java.awt.geom.Point2D;
 
 import interfaces.Dessinable;
 import interfaces.Selectionnable;
+import application.Systems;
 
 public class Poubelles implements Selectionnable, Dessinable {
 	public String nom;
-	public int idType;
+	public Systems.TypePoubelle idType;
 	public String image;
 	
 	private double largeur = 10;
@@ -19,13 +20,18 @@ public class Poubelles implements Selectionnable, Dessinable {
 	private Point2D.Double point;
 	private Rectangle2D.Double rectangle = new Rectangle2D.Double();
 	
-	public Poubelles(String nomPoubelle, int id) {
+	public Poubelles(String nomPoubelle, Systems.TypePoubelle id, String image) {
+		this.nom = nomPoubelle;
+		this.idType = id;
+		this.image = image;
+	}
+	public Poubelles(String nomPoubelle, Systems.TypePoubelle id) {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
 		double initPosX = 2;
 		double initPosY = 2;
-		point = new Point2D.Double(initPosX + 4 * id, initPosY);
+		point = new Point2D.Double(initPosX + 4 * id.ordinal(), initPosY);
 	}
 	
 	public void setNom(String nom) {
@@ -36,11 +42,11 @@ public class Poubelles implements Selectionnable, Dessinable {
 		return this.nom;
 	}
 	
-	public void setId(int id) {
+	public void setId(Systems.TypePoubelle id) {
 		this.idType = id;
 	}
 	
-	public int getId() {
+	public Systems.TypePoubelle getId() {
 		return this.idType;
 	}
 	
@@ -52,11 +58,7 @@ public class Poubelles implements Selectionnable, Dessinable {
 		return this.image;
 	}
 	
-	public Poubelles(String nomPoubelle, int id, String image) {
-		this.nom = nomPoubelle;
-		this.idType = id;
-		this.image = image;
-	}
+	
 
 	@Override
 	public void dessiner(Graphics2D g2d, double pixelsParMetre) {
