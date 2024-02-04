@@ -18,6 +18,7 @@ import objets.Trash;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.Point2D;
 
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
@@ -25,6 +26,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
 	private boolean dragging = false;
+	
+	private int iterDepuisChute = 0;
 	
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
@@ -50,7 +53,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (dragging) {
-					System.out.println("released");
+					demarrerAnim();
 					dragging = false;
 				}
 			}
@@ -84,7 +87,25 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	@Override
 	public void run() {
-		
+		while (enCoursAnim) {
+			double gravity = 1.7;
+			
+			Point2D.Double p = trashAJeter.getPoint();
+			trashAJeter.setPoint(p.x, p.y - gravity * iterDepuisChute);
+			iterDepuisChute += 1;
+			
+			if (p.y < 0) {
+				enCoursAnim = false;
+			}
+			
+			repaint();
+			
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public void demarrerAnim() {
@@ -93,10 +114,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			Thread proc = new Thread(this);
 			proc.start();
 		}
-	}
-	
-	public void arreterAnim() {
-		enCoursAnim = false;
 	}
 	
 	public static Image image(String fichier) {
