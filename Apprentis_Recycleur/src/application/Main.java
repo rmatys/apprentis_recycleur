@@ -20,7 +20,7 @@ public class Main extends JFrame {
 			public void run() {
 				try {
 					Main frame = new Main();
-					frame.setUndecorated(true);
+//					frame.setUndecorated(true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		Panel panel = new Panel();
-		panel.setBounds(0, 0, getWidth() - 15, getHeight() - 40);
+		panel.setBounds(0, 0, getWidth(), getHeight() - 50);
 		contentPane.add(panel);
 		
 		Systems.ajouterPoubelles(panel, 1);
