@@ -83,6 +83,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		}
 		
 		trashAJeter.dessiner(g2d);
+		
+		g2d.setColor(Color.yellow);
+		g2d.drawString("aaaaaaaaaaaaaaaaaaaaaaaa", 50, 50);
 	}
 	
 	@Override

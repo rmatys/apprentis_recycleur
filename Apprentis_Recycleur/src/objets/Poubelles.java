@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D;
@@ -31,8 +32,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
-		double initPosX = 400; // 40
-		double initPosY = 400;
+		double initPosX = 40;
+		double initPosY = 40;
 		point = new Point2D.Double(initPosX + 70 * id.ordinal(), initPosY);
 	}
 	
@@ -65,6 +66,7 @@ public class Poubelles implements Selectionnable, Dessinable {
 	@Override
 	public void dessiner(Graphics2D g2d) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();
+		g2dPrive.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		AffineTransform mat = new AffineTransform();
 		mat.scale(1, -1);
@@ -79,10 +81,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 		rectangle = new Rectangle2D.Double(px, py, l, h);
 		g2dPrive.fill(mat.createTransformedShape(rectangle));	
 		
-		g2dPrive.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		g2dPrive.setColor(Color.yellow);
-		g2dPrive.drawString(this.nom, (int)point.getX(), (int)point.getY());
-		System.out.println(idType);
+		g2dPrive.drawString("aaaaaaaaaaaaaaaaaaaaaaaa", 50, 50);
 	}
 
 	@Override
