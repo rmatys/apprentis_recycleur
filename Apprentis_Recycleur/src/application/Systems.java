@@ -85,11 +85,29 @@ public class Systems {
 	}
 	
 	public void succes() {
+		donnees.incrementerScore(1);
+		donnees.enleverDechet();
+		donnees.sequence++;
+		if(donnees.sequence==5) {
+			donnees.setVies(donnees.getVies()+1);
+		}
+		if(donnees.sequence==10) {
+			
+		}
+		if(donnees.sequence==15) {
 		
+		}
+		if(donnees.sequence==20) {
+
+		}
+		if(donnees.sequence==25) {
+		}
 	}
 	
 	public void echec() {
-		
+		donnees.sequence=0;
+		donnees.enleverVie();
+		donnees.enleverDechet();
 	}
 
 	public static void ajouterTrash(Panel pan) {

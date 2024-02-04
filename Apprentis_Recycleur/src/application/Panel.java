@@ -89,8 +89,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			double d = trashAJeter.getDiametre();
 			
 			poubelle.dessiner(g2d);
-			if (poubelle.getRectangle().contains(p.x + d/2, p.y + d/2, d, d)) {
+			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
+				trashAJeter.setPoint(-10, -10);
 				arretAnim();
 			}
 		}

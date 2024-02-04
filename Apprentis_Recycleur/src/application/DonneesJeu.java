@@ -5,6 +5,7 @@ public class DonneesJeu {
 	public int score = 0;
 	public int nbVies = 5;
 	public int dechetsRestants;
+	public int sequence=0;
 	
 	public DonneesJeu(int score, int nbVies, int dechetsRestants) {
 		this.score = score;
