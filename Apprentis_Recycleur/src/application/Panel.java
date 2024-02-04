@@ -126,7 +126,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			g2dImage.drawImage(img, null, getFocusCycleRootAncestor());
 			
 
-			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
+			if (poubelle.getRectangle().intersects(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
 				trashAJeter.setPoint(1070, 200);
 				arretAnim();
