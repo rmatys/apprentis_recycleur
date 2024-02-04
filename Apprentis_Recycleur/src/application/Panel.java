@@ -144,7 +144,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			}
 		}
 
-		trashAJeter.dessiner(g2d);
 		g2d.translate(0, -getHeight());
 		g2d.setColor(pale);
 		g2d.setFont(new Font("Eras Demi ITC", Font.BOLD, 25));
