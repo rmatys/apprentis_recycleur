@@ -90,11 +90,17 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		// Caroline Houle professeur en SIM au collège de Maisonneuve
 		Image img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
 		g2d.drawImage(img_dojo, null, getFocusCycleRootAncestor());
+		
+		// Caroline Houle professeur en SIM au collège de Maisonneuve
+		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		g2dImage.translate(1000, 500);
+		Image img_box = OutilsImage.lireImageEtRedimensionner("box.png", 150, 150);
+		g2dImage.drawImage(img_box, null, getFocusCycleRootAncestor());
 
 		int redimX = 70;
 		int redimY = 90;
 		
-		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
 		
 		g2d.setColor(Color.white);
@@ -122,7 +128,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
-				trashAJeter.setPoint(getWidth() / 2,  4 * getHeight() / 5);
+				trashAJeter.setPoint(1070, 200);
 				arretAnim();
 			}
 		}
@@ -172,18 +178,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		iterDepuisChute = 0;
 	}
 
-
-	public static Image image(String fichier) {
-		Image img = null;
-		URL urlFichier = Panel.class.getClassLoader().getResource(fichier);
-		try {
-			img = ImageIO.read(urlFichier);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return(img);
-	}
 	public void afficherScores(Systems systeme) {
 		score=systeme.donnees.getScore();
 		nbrVies=systeme.donnees.getVies();
