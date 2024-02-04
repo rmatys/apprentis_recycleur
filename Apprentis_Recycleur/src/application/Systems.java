@@ -19,7 +19,7 @@ public class Systems {
 	}
 
 	public enum TypePoubelle {
-		BIO, VERRE, CARTON, PLASTIQUE, ELECTRONIQUE, METAL, DECHET;
+		DECHET, COMPOST, VERRE, METAL, PLASTIQUE, PAPIER, EWASTE;
 	}
 
 	public int nbrTrashAjouter = 0;
@@ -96,7 +96,7 @@ public class Systems {
 		TypeDechet typeDechet = dechet.getId();
 
 		switch(typePoubelle) {
-		case BIO:{
+		case COMPOST:{
 			if(typeDechet.equals(TypeDechet.BIO) || typeDechet.equals(TypeDechet.VETEMENTS)) {
 				succes();
 			}else {
@@ -110,7 +110,7 @@ public class Systems {
 				echec();
 			}
 		}
-		case CARTON:{
+		case PAPIER:{
 			if(typeDechet.equals(TypeDechet.CARTON) || typeDechet.equals(TypeDechet.PAPIER)) {
 				succes();
 			}else {
@@ -124,7 +124,7 @@ public class Systems {
 				echec();
 			}
 		}
-		case ELECTRONIQUE:{
+		case EWASTE:{
 			if(typeDechet.equals(TypeDechet.BATTERIE) || typeDechet.equals(TypeDechet.ORDINATEUR)) {
 				succes();
 			}else {

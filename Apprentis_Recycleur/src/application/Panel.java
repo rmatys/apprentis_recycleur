@@ -18,7 +18,10 @@ import objets.Trash;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -91,19 +94,26 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		// Caroline Houle professeur en SIM au collège de Maisonneuve
 		Image img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
 		g2d.drawImage(img_dojo, null, getFocusCycleRootAncestor());
+		
+		// Caroline Houle professeur en SIM au collège de Maisonneuve
+		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		g2dImage.translate(1000, 500);
+		Image img_box = OutilsImage.lireImageEtRedimensionner("box.png", 150, 150);
+		g2dImage.drawImage(img_box, null, getFocusCycleRootAncestor());
 
 		int redimX = 70;
 		int redimY = 90;
 
-		Graphics2D g2dImage = (Graphics2D) g2d.create();
+		g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
-
-		g2d.setColor(Color.black);
-		g2d.setFont(new Font("Arial", Font.BOLD, 13));
+		
+		g2d.setFont(new Font("Arial", Font.PLAIN, 17));
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			g2d.drawString(listPoubelles.get(i).getNom(), 57+(i*140), 645);
+			g2d.drawString(listPoubelles.get(i).getId().name(), 35+(i*140), 650);
 		}
 		g2d.translate(0, getHeight());
+		
+		trashAJeter.dessiner(g2d);
 
 
 		for (int j = 0; j < listPoubelles.size(); j++) {
@@ -122,9 +132,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			g2dImage.drawImage(img, null, getFocusCycleRootAncestor());
 
 
-			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
+			if (poubelle.getRectangle().intersects(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
-				trashAJeter.setPoint(getWidth() / 2,  4 * getHeight() / 5);
+				trashAJeter.setPoint(1070, 200);
+				arretAnim();
+			} else if (p.y < poubelle.getRectangle().y) {
+				trashAJeter.setPoint(1070, 200);
 				arretAnim();
 			}
 		}
@@ -178,18 +191,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		iterDepuisChute = 0;
 	}
 
-
-	public static Image image(String fichier) {
-		Image img = null;
-		URL urlFichier = Panel.class.getClassLoader().getResource(fichier);
-		try {
-			img = ImageIO.read(urlFichier);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return(img);
-	}
 	public void afficherScores(Systems systeme) {
 		score=systeme.donnees.getScore();
 		nbrVies=systeme.donnees.getVies();

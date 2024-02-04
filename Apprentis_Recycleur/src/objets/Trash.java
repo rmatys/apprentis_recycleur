@@ -15,7 +15,7 @@ public class Trash implements Selectionnable, Dessinable {
 	public Systems.TypeDechet idType;
 	public String image;
 	
-	private double diametre = 20;
+	private double diametre = 50;
 	private Point2D.Double point;
 	private Ellipse2D.Double cercle= new Ellipse2D.Double();
 	
@@ -24,7 +24,7 @@ public class Trash implements Selectionnable, Dessinable {
 		this.nom = nomTrash;
 		this.idType = id;
 		
-		point = new Point2D.Double(500, 600);
+		point = new Point2D.Double(1070, 200);
 	}
 	
 	public Trash(String nomTrash, Systems.TypeDechet id, String image) {
