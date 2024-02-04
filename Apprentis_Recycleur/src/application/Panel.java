@@ -25,6 +25,8 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JLabel;
 import java.awt.Font;
 
+import java.util.Random;
+
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
 
@@ -39,7 +41,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	Image img_dojo;
 	Image img_box;
-
+	
+	Color[] couleurs = {Color.black, Color.green, Color.cyan, Color.blue, Color.orange, Color.yellow, Color.red};
 
 	public Systems systeme = new Systems();
 	public ArrayList<Trash> listeDechets = systeme.randomiser();
@@ -56,7 +59,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				dragging = true;
-
+				
 				if (!falling) {
 					trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());				
 					repaint();
@@ -120,7 +123,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		
 		trashAJeter.dessiner(g2d);
 
-
 		for (int j = 0; j < listPoubelles.size(); j++) {
 			Poubelles poubelle = listPoubelles.get(j);
 			Point2D.Double p = trashAJeter.getPoint();
@@ -152,7 +154,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.translate(0, -getHeight());
 		g2d.setColor(pale);
 		g2d.setFont(new Font("Eras Demi ITC", Font.BOLD, 25));
-		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),380,50);
+		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),getWidth()/2-127,60);
 
 		g2d.setFont(new Font("Eras Demi ITC", Font.PLAIN, 21));
 		g2d.drawString("Score : "+score, 50, 45);

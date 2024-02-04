@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import application.Systems;
 import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Main extends JFrame {
 
@@ -22,7 +24,7 @@ public class Main extends JFrame {
 			public void run() {
 				try {
 					Main frame = new Main();
-					//					frame.setUndecorated(true);
+					//frame.setUndecorated(true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
