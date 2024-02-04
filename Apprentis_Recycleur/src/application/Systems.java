@@ -210,7 +210,7 @@ public class Systems {
 			dechetsAJeter.add(dechetsTableau.remove(randomNum));
 
 		}
-		
+	
 		return dechetsAJeter;
 	}
 }

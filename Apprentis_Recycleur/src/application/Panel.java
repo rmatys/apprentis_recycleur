@@ -38,6 +38,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private int iterDepuisChute = 0;
 	
 	public Systems systeme = new Systems();
+	
+	public ArrayList<Trash> listeDechets;
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
@@ -136,7 +138,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				trashAJeter.setPoint(1070, 200);
 				systeme.verifierCompatibilite(poubelle, trashAJeter);
 				arretAnim();
-				repaint();
 			}
 		}
 		
