@@ -11,79 +11,79 @@ import objets.*;
 
 
 public class Systems {
-	
-	DonneesJeu donnees = new DonneesJeu(0,5,25);
-	
-	public enum TypeDechet {
-        BATTERIE, BIO, VERRE, CARTON, VETEMENTS, METAL, PAPIER, PLASTIQUE_DUR, ORDINATEUR, DECHET, PLASTIQUE_MOU, NOURRITURE_DECHET;
-    }
-	
-	public enum TypePoubelle {
-        BIO, VERRE, CARTON, PLASTIQUE, ELECTRONIQUE, METAL, DECHET;
-    }
-	
-	public int nbrTrashAjouter = 0;
-	
-	public ArrayList<Trash> dechetsTableau = new ArrayList<>(); 
-	
-    Path pathDatabase = Paths.get("..\\Apprentis_Recycleur\\src\\application\\Database.txt");
-	String[] tableau;
-    TypeDechet type;
-    {
-	try {
-		List<String> DechetsStr = Files.readAllLines(pathDatabase);
-	    for (String s : DechetsStr) {
-	        tableau = s.split("\t");
-	        
-	        switch(tableau[1]) {
-	        case "BATTERIE":{
-				type = TypeDechet.BATTERIE;
-			}
-	        case "VETEMENTS":{
-				type = TypeDechet.VETEMENTS;
-			}
-	        case "PAPIER":{
-				type = TypeDechet.PAPIER;
-			}
-	        case "NOURRITURE_DECHET":{
-				type = TypeDechet.NOURRITURE_DECHET;
-			}
-			case "BIO":{
-				type = TypeDechet.BIO;
-			}
-			case "VERRE":{
-				type = TypeDechet.VERRE;
-			}
-			case "CARTON":{
-				type = TypeDechet.CARTON;
-			}
-			case "PLASTIQUE_MOU":{
-				type = TypeDechet.PLASTIQUE_MOU;
-			}
-			case "PLASTIQUE_DUR":{
-				type = TypeDechet.PLASTIQUE_DUR;
-			}
-			case "ORDINATEUR":{
-				type = TypeDechet.ORDINATEUR;
-			}
-			case "METAL":{
-				type = TypeDechet.METAL;
-			}
-			case "DECHET":{
-				type = TypeDechet.DECHET;
-			}
-			}
-	       
-	        dechetsTableau.add(new Trash(tableau[0], type));
 
-	    }
-	    
+	DonneesJeu donnees = new DonneesJeu(0,5,25);
+
+	public enum TypeDechet {
+		BATTERIE, BIO, VERRE, CARTON, VETEMENTS, METAL, PAPIER, PLASTIQUE_DUR, ORDINATEUR, DECHET, PLASTIQUE_MOU, NOURRITURE_DECHET;
 	}
-	catch(IOException e) {
-		System.out.println("Database pas trouvee");
-    }
-    }
-	
+
+	public enum TypePoubelle {
+		BIO, VERRE, CARTON, PLASTIQUE, ELECTRONIQUE, METAL, DECHET;
+	}
+
+	public int nbrTrashAjouter = 0;
+
+	public ArrayList<Trash> dechetsTableau = new ArrayList<>(); 
+
+	Path pathDatabase = Paths.get("..\\Apprentis_Recycleur\\src\\application\\Database.txt");
+	String[] tableau;
+	TypeDechet type;
+	{
+		try {
+			List<String> DechetsStr = Files.readAllLines(pathDatabase);
+			for (String s : DechetsStr) {
+				tableau = s.split("\t");
+
+				switch(tableau[1]) {
+				case "BATTERIE":{
+					type = TypeDechet.BATTERIE;
+				}
+				case "VETEMENTS":{
+					type = TypeDechet.VETEMENTS;
+				}
+				case "PAPIER":{
+					type = TypeDechet.PAPIER;
+				}
+				case "NOURRITURE_DECHET":{
+					type = TypeDechet.NOURRITURE_DECHET;
+				}
+				case "BIO":{
+					type = TypeDechet.BIO;
+				}
+				case "VERRE":{
+					type = TypeDechet.VERRE;
+				}
+				case "CARTON":{
+					type = TypeDechet.CARTON;
+				}
+				case "PLASTIQUE_MOU":{
+					type = TypeDechet.PLASTIQUE_MOU;
+				}
+				case "PLASTIQUE_DUR":{
+					type = TypeDechet.PLASTIQUE_DUR;
+				}
+				case "ORDINATEUR":{
+					type = TypeDechet.ORDINATEUR;
+				}
+				case "METAL":{
+					type = TypeDechet.METAL;
+				}
+				case "DECHET":{
+					type = TypeDechet.DECHET;
+				}
+				}
+
+				dechetsTableau.add(new Trash(tableau[0], type));
+
+			}
+
+		}
+		catch(IOException e) {
+			System.out.println("Database pas trouvee");
+		}
+	}
+
 	public void ajouterPoubelles(Panel pan, int nbrPoubelles) {
 		for(TypePoubelle type: TypePoubelle.values()) {
 			Poubelles poubelle = new Poubelles("bin" + type.ordinal(), type);
@@ -94,7 +94,7 @@ public class Systems {
 	public void verifierCompatibilite(Poubelles poubelle, Trash dechet) {
 		TypePoubelle typePoubelle = poubelle.getId();
 		TypeDechet typeDechet = dechet.getId();
-		
+
 		switch(typePoubelle) {
 		case BIO:{
 			if(typeDechet.equals(TypeDechet.BIO) || typeDechet.equals(TypeDechet.VETEMENTS)) {
@@ -146,9 +146,9 @@ public class Systems {
 			}
 		}
 		}
-			
+
 	}
-	
+
 	public void succes() {
 		donnees.incrementerScore(1);
 		donnees.enleverDechet();
@@ -157,10 +157,10 @@ public class Systems {
 			donnees.setVies(donnees.getVies()+1);
 		}
 		if(donnees.sequence==10) {
-			
+
 		}
 		if(donnees.sequence==15) {
-		
+
 		}
 		if(donnees.sequence==20) {
 
@@ -168,7 +168,7 @@ public class Systems {
 		if(donnees.sequence==25) {
 		}
 	}
-	
+
 	public void echec() {
 		donnees.sequence=0;
 		donnees.enleverVie();
@@ -178,8 +178,8 @@ public class Systems {
 	public  void ajouterTrash(Panel pan) {
 		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);
 		pan.trashAJeter = trash;
-		
+
 		nbrTrashAjouter += 1;
-		
+
 	}
 }
