@@ -89,6 +89,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			double d = trashAJeter.getDiametre();
 			
 			poubelle.dessiner(g2d);
+			
+			// Caroline Houle professeur en SIM au collège de Maisonneuve
+			Image img = OutilsImage.lireImage("bin1.jpeg");
+			
+			g2d.drawImage(img, null, getFocusCycleRootAncestor());
+			
 			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
 				trashAJeter.setPoint(getWidth() / 2,  4 * getHeight() / 5);
@@ -137,18 +143,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		enCoursAnim = false;
 		falling = false;
 		iterDepuisChute = 0;
-	}
-	
-	public static Image image(String fichier) {
-		Image img = null;
-		URL urlFichier = Panel.class.getClassLoader().getResource(fichier);
-		try {
-			img = ImageIO.read(urlFichier);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return(img);
 	}
 
 }
