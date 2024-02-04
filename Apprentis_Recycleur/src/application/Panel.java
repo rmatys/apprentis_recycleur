@@ -80,29 +80,27 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		if (premiereFois) {
-			g2d.setColor(Color.white);
-			for(int i=0; i<listPoubelles.size();i++) {
-				g2d.drawString(listPoubelles.get(i).getNom(), 45+(i*140), 645);
-				initialization();	
-			}
+			initialization();	
 		}
-	
 
-
-		g2d.translate(0, getHeight());
-
+		g2d.setColor(Color.white);
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			Poubelles poubelle = listPoubelles.get(i);
+			g2d.drawString(listPoubelles.get(i).getNom(), 45+(i*140), 645);
+		}
+
+		g2d.translate(0, getHeight());	
+		for (int j = 0; j < listPoubelles.size(); j++) {
+			Poubelles poubelle = listPoubelles.get(j);
 			Point2D.Double p = trashAJeter.getPoint();
 			double d = trashAJeter.getDiametre();
 
 			poubelle.dessiner(g2d);
-			
+
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
 			Image img = OutilsImage.lireImage("bin" + (poubelle.getId().ordinal() + 1) +".jpeg");
-			
+
 			g2d.drawImage(img, null, getFocusCycleRootAncestor());
-			
+
 			if (poubelle.getRectangle().contains(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
 				trashAJeter.setPoint(getWidth() / 2,  4 * getHeight() / 5);
@@ -111,8 +109,11 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		}
 
 		trashAJeter.dessiner(g2d);
-
-
+		g2d.translate(0, -getHeight());	
+	//	g2d.setFont(new Font("Arial"),12, )
+		g2d.drawString("Score : "+"3" /*donnees.getScore()*/, 50, 45);
+		g2d.drawString("Vies : "+ "3" /*donnees.getVies()*/, 50, 85);
+		g2d.drawString("Déchets restants : "+ "22", /* donnees.getRestants()*/ 50, 125);
 	}
 
 	@Override

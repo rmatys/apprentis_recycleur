@@ -85,8 +85,6 @@ public class Poubelles implements Selectionnable, Dessinable {
 		rectangle = new Rectangle2D.Double(px, py, l, h);
 		g2dPrive.fill(mat.createTransformedShape(rectangle));	
 		
-		g2dPrive.setColor(Color.yellow);
-		g2dPrive.drawString("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", (int)point.getX(), (int)point.getY());
 	}
 
 	@Override
