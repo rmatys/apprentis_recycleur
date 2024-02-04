@@ -42,5 +42,7 @@ public class Systems {
 		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);
 		pan.trashAJeter = trash;
 		
+		nbrTrashAjouter += 1;
+		
 	}
 }
