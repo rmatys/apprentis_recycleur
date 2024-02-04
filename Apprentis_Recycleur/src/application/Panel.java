@@ -187,6 +187,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		enCoursAnim = false;
 		falling = false;
 		iterDepuisChute = 0;
+		
+		repaint();
 	}
 
 	public void afficherScores(Systems systeme) {
