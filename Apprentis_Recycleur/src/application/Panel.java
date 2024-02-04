@@ -18,7 +18,10 @@ import objets.Trash;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -103,11 +106,13 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
 		
-		g2d.setColor(Color.white);
+		g2d.setFont(new Font("Arial", Font.PLAIN, 17));
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			g2d.drawString(listPoubelles.get(i).getNom(), 57+(i*140), 645);
+			g2d.drawString(listPoubelles.get(i).getId().name(), 35+(i*140), 650);
 		}
 		g2d.translate(0, getHeight());
+		
+		trashAJeter.dessiner(g2d);
 
 
 		for (int j = 0; j < listPoubelles.size(); j++) {
@@ -132,10 +137,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				arretAnim();
 			}
 		}
-
-		trashAJeter.dessiner(g2d);
+		
 		g2d.translate(0, -getHeight());	
-		g2d.setFont(new Font("Arial", Font.PLAIN, 17));
+		
+		g2d.setColor(Color.white);
 		g2d.drawString("Score : "+score, 50, 45);
 		g2d.drawString("Vies : "+ nbrVies, 50, 80);
 		g2d.drawString("Déchets restants : "+dechetsRest, 50, 115);
