@@ -34,9 +34,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean enCoursAnim = false;
 	private boolean dragging = false;
 	private boolean falling = false;
-	private int nbrVies=5;
-	private int score=0;
-	private int dechetsRest=25;
 	private int iterDepuisChute = 0;
 	
 	Image img_dojo;
@@ -202,10 +199,4 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		repaint();
 	}
 
-	public void afficherScores(Systems systeme) {
-		score=systeme.donnees.getScore();
-		nbrVies=systeme.donnees.getVies();
-		dechetsRest=systeme.donnees.getRestants();
-		
-	}
 }
