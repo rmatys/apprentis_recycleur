@@ -117,6 +117,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		case VERRE:{
 			if(typeDechet.equals(TypeDechet.VERRE)) {
@@ -124,6 +125,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		case CARTON:{
 			if(typeDechet.equals(TypeDechet.CARTON) || typeDechet.equals(TypeDechet.PAPIER)) {
@@ -131,6 +133,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		case PLASTIQUE:{
 			if(typeDechet.equals(TypeDechet.PLASTIQUE_DUR) || typeDechet.equals(TypeDechet.PLASTIQUE_MOU)) {
@@ -138,6 +141,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		case EWASTE:{
 			if(typeDechet.equals(TypeDechet.BATTERIE) || typeDechet.equals(TypeDechet.ORDINATEUR)) {
@@ -145,6 +149,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		case METAL:{
 			if(typeDechet.equals(TypeDechet.METAL)) {
@@ -152,6 +157,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		case DECHET:{
 			if(typeDechet.equals(TypeDechet.DECHET) || typeDechet.equals(TypeDechet.NOURRITURE_DECHET)) {
@@ -159,6 +165,7 @@ public class Systems {
 			}else {
 				echec();
 			}
+			break;
 		}
 		}
 			
@@ -193,7 +200,7 @@ public class Systems {
 	}
 
 	public  void ajouterTrash(Panel pan) {
-		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);
+		Trash trash = new Trash("Dechet #" + nbrTrashAjouter+1 + ":", TypeDechet.BIO);
 		pan.trashAJeter = trash;
 		
 		nbrTrashAjouter += 1;
