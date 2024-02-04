@@ -21,7 +21,7 @@ Chaussettes	VETEMENTS
 Cannette de Coke	METAL
 Ferraille	METAL
 Capsule de bouteille	METAL
-Fils de courant	METAL
+Fils electrique	METAL
 Vieux journal	PAPIER
 Enveloppe	PAPIER
 Cahier de notes	PAPIER

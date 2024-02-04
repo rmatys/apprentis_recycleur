@@ -51,7 +51,7 @@ public class DonneesJeu {
 		this.nbVies--;
 		
 		if (nbVies == 0) {
-			JOptionPane.showMessageDialog(null, score);
+			JOptionPane.showMessageDialog(null, "Score final: " + score);
 			System.exit(0);
 		}
 	}
@@ -60,7 +60,7 @@ public class DonneesJeu {
 		this.dechetsRestants--;
 		
 		if (dechetsRestants == 0) {
-			JOptionPane.showMessageDialog(null, score);
+			JOptionPane.showMessageDialog(null, "Score final: " + score);
 			System.exit(0);
 		}
 	}
