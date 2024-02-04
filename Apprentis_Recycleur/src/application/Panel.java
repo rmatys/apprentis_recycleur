@@ -29,7 +29,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean enCoursAnim = false;
 	private boolean dragging = false;
 	private boolean falling = false;
-
+	private int nbrVies=5;
+	private int score=0;
+	private int dechetsRest=25;
 	private int iterDepuisChute = 0;
 	
 	public Systems systeme = new Systems();
@@ -91,12 +93,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		Graphics2D g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
 		
-		g2d.translate(0, getHeight());
-
 		g2d.setColor(Color.white);
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			g2d.drawString(listPoubelles.get(i).getNom(), 45+(i*140), 645);
+			g2d.drawString(listPoubelles.get(i).getNom(), 57+(i*140), 645);
 		}
+		g2d.translate(0, getHeight());
+
 
 		for (int j = 0; j < listPoubelles.size(); j++) {
 			Poubelles poubelle = listPoubelles.get(j);
@@ -124,10 +126,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 		trashAJeter.dessiner(g2d);
 		g2d.translate(0, -getHeight());	
-		g2d.setFont(new Font("Arial", Font.PLAIN, 12));
-		g2d.drawString("Score : "+"3" /*donnees.getScore()*/, 50, 45);
-		g2d.drawString("Vies : "+ "3" /*donnees.getVies()*/, 50, 85);
-		g2d.drawString("Déchets restants : "+ "22", /* donnees.getRestants()*/ 50, 125);
+		g2d.setFont(new Font("Arial", Font.PLAIN, 17));
+		g2d.drawString("Score : "+score, 50, 45);
+		g2d.drawString("Vies : "+ nbrVies, 50, 80);
+		g2d.drawString("Déchets restants : "+dechetsRest, 50, 115);
 	}
 
 	@Override
@@ -179,5 +181,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 		return(img);
 	}
-
+	public void afficherScores(Systems systeme) {
+		score=systeme.donnees.getScore();
+		nbrVies=systeme.donnees.getVies();
+		dechetsRest=systeme.donnees.getRestants();
+	}
 }
