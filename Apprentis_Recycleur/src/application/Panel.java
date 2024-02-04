@@ -40,10 +40,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	Image img_dojo;
 	Image img_box;
 	
+
 	public Systems systeme = new Systems();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
+	private Color pale =new Color(242,239,222);
 
 	/**
 	 * Create the panel.
@@ -96,7 +98,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		if (premiereFois) {
 			initialization();	
 		}
-		
+
 		g2d.drawImage(img_dojo, null, getFocusCycleRootAncestor());
 		
 		Graphics2D g2dImage = (Graphics2D) g2d.create();
@@ -105,7 +107,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 		int redimX = 70;
 		int redimY = 90;
-		
+
 		g2dImage = (Graphics2D) g2d.create();
 		g2dImage.translate(35, getHeight() - redimY - 35);
 		
@@ -127,7 +129,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
 			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".png", redimX, redimY);
-			
+
 			if (j != 0) {
 				g2dImage.translate(140, 0);
 			}
@@ -140,10 +142,14 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				arretAnim();
 			}
 		}
-		
-		g2d.translate(0, -getHeight());	
-		
-		g2d.setColor(Color.white);
+
+		trashAJeter.dessiner(g2d);
+		g2d.translate(0, -getHeight());
+		g2d.setColor(pale);
+		g2d.setFont(new Font("Eras Demi ITC", Font.BOLD, 25));
+		g2d.drawString("Objet à trier: "+ trashAJeter.getNom(),380,50);
+
+		g2d.setFont(new Font("Eras Demi ITC", Font.PLAIN, 21));
 		g2d.drawString("Score : "+score, 50, 45);
 		g2d.drawString("Vies : "+ nbrVies, 50, 80);
 		g2d.drawString("Déchets restants : "+dechetsRest, 50, 115);
@@ -192,5 +198,6 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		score=systeme.donnees.getScore();
 		nbrVies=systeme.donnees.getVies();
 		dechetsRest=systeme.donnees.getRestants();
+		
 	}
 }
