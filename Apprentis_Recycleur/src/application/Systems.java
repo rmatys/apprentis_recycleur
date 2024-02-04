@@ -73,10 +73,9 @@ public class Systems {
 				type = TypeDechet.DECHET;
 			}
 			}
-	        
+	       
 	        dechetsTableau.add(new Trash(tableau[0], type));
-	        System.out.println(tableau[0]);
-	        System.out.println(type);
+
 	    }
 	    
 	}
