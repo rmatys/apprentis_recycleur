@@ -39,7 +39,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	public Systems systeme = new Systems();
 
-	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
+	public ArrayList<Poubelles> listPoubelles = new ArrayList<>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
 
 	/**
@@ -134,7 +134,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			if (poubelle.getRectangle().intersects(p.x, p.y + d, d, d)) {
 				//				poubelle.getId();
 				trashAJeter.setPoint(1070, 200);
+				systeme.verifierCompatibilite(poubelle, trashAJeter);
 				arretAnim();
+				repaint();
 			}
 		}
 		
