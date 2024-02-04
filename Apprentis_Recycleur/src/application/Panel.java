@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import objets.Poubelles;
+import objets.Trash;
 
 public class Panel extends JPanel implements Runnable, Serializable {
 	private static final long serialVersionUID = -3422389399040540538L;
@@ -24,6 +25,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private double pixelsParMetre;
 	
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
+	public Trash trashAJeter = new Trash("", -1);
 
 	/**
 	 * Create the panel.
@@ -38,6 +40,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				
 		double largeurMetre = 20;
 		pixelsParMetre = getWidth() / largeurMetre;
+		System.out.println(pixelsParMetre);
 	}
 	
 	@Override
@@ -55,6 +58,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		for (int i = 0; i < listPoubelles.size(); i++) {
 			listPoubelles.get(i).dessiner(g2d, pixelsParMetre);
 		}
+		
+		trashAJeter.dessiner(g2d, pixelsParMetre); 
 	}
 	
 	@Override

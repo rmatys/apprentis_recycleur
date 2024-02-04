@@ -23,8 +23,8 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
-		double initPosX = 2;
-		double initPosY = 2;
+		double initPosX = 20;
+		double initPosY = 20;
 		point = new Point2D.Double(initPosX + 4 * id, initPosY);
 	}
 	
@@ -69,7 +69,10 @@ public class Poubelles implements Selectionnable, Dessinable {
 		
 		double l = largeur / pixelsParMetre;
 		double h = hauteur / pixelsParMetre;
-		rectangle = new Rectangle2D.Double(point.getX()-l/2, point.getY()-h/2, l, h);
+		double px = (point.getX()-l/2) / pixelsParMetre;
+		double py = (point.getY()-h/2) / pixelsParMetre;
+		
+		rectangle = new Rectangle2D.Double(px, py, l, h);
 		g2dPrive.fill(mat.createTransformedShape(rectangle));	
 	}
 
