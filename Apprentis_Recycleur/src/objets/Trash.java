@@ -69,6 +69,10 @@ public class Trash implements Selectionnable, Dessinable {
 		return this.point;
 	}
 	
+	public double getDiametre() {
+		return this.diametre;
+	}
+	
 	@Override
 	public void dessiner(Graphics2D g2d) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();

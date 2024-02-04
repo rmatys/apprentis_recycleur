@@ -42,7 +42,7 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		Panel panel = new Panel();
-		panel.setBounds(0, 0, getWidth(), getHeight() - 50);
+		panel.setBounds(0, 0, getWidth() - 200, getHeight() - 50);
 		contentPane.add(panel);
 		
 		Systems.ajouterPoubelles(panel, 1);

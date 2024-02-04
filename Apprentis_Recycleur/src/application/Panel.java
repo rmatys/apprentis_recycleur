@@ -26,6 +26,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean premiereFois = true;
 	private boolean enCoursAnim = false;
 	private boolean dragging = false;
+	private boolean falling = false;
 	
 	private int iterDepuisChute = 0;
 	
@@ -40,8 +41,11 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				dragging = true;
-				trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());				
-				repaint();
+				
+				if (!falling) {
+					trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());				
+					repaint();
+				}
 			}
 		});
 		addMouseListener(new MouseAdapter() {
@@ -55,6 +59,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 				if (dragging) {
 					demarrerAnim();
 					dragging = false;
+					falling = true;
 				}
 			}
 		});
@@ -79,7 +84,15 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		g2d.translate(0, getHeight());
 		
 		for (int i = 0; i < listPoubelles.size(); i++) {
-			listPoubelles.get(i).dessiner(g2d);
+			Poubelles poubelle = listPoubelles.get(i);
+			Point2D.Double p = trashAJeter.getPoint();
+			double d = trashAJeter.getDiametre();
+			
+			poubelle.dessiner(g2d);
+			if (poubelle.getRectangle().contains(p.x + d/2, p.y + d/2, d, d)) {
+				//				poubelle.getId();
+				arretAnim();
+			}
 		}
 		
 		trashAJeter.dessiner(g2d);
@@ -98,8 +111,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			iterDepuisChute += 1;
 			
 			if (p.y < 0) {
-				enCoursAnim = false;
-				iterDepuisChute = 0;
+				arretAnim();
 			}
 			
 			repaint();
@@ -118,6 +130,12 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			Thread proc = new Thread(this);
 			proc.start();
 		}
+	}
+	
+	public void arretAnim() {
+		enCoursAnim = false;
+		falling = false;
+		iterDepuisChute = 0;
 	}
 	
 	public static Image image(String fichier) {
