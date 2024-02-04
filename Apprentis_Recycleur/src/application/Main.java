@@ -13,6 +13,7 @@ public class Main extends JFrame {
 
 	private JPanel contentPane=new JPanel();
 	Panel panel = new Panel();
+	Systems systeme = new Systems();
 	/**
 	 * Launch the application.
 	 */
