@@ -86,6 +86,10 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		if (premiereFois) {
 			initialization();	
 		}
+		
+		// Caroline Houle professeur en SIM au collège de Maisonneuve
+		Image img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
+		g2d.drawImage(img_dojo, null, getFocusCycleRootAncestor());
 
 		int redimX = 70;
 		int redimY = 90;
@@ -108,8 +112,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			poubelle.dessiner(g2d);
 
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
-
-			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".jpeg", redimX, redimY);
+			Image img = OutilsImage.lireImageEtRedimensionner("bin" + (poubelle.getId().ordinal()) +".png", redimX, redimY);
 			
 			if (j != 0) {
 				g2dImage.translate(140, 0);
