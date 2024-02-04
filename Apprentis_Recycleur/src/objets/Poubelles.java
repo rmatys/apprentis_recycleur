@@ -23,9 +23,9 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.nom = nomPoubelle;
 		this.idType = id;
 		
-		double initPosX = 60;
-		double initPosY = 60;
-		point = new Point2D.Double(initPosX + 4 * id, initPosY);
+		double initPosX = 40;
+		double initPosY = 40;
+		point = new Point2D.Double(initPosX + 70 * id, initPosY);
 	}
 	
 	public void setNom(String nom) {
