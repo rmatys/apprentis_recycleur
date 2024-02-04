@@ -38,6 +38,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	
 	Image img_dojo;
 	Image img_box;
+	Image img_trash;
 	
 	Color[] couleurs = {Color.black, Color.green, Color.cyan, Color.blue, Color.orange, Color.yellow, Color.red};
 
@@ -88,6 +89,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		// Caroline Houle professeur en SIM au collège de Maisonneuve
 		img_dojo = OutilsImage.lireImageEtRedimensionner("dojo.png", getWidth(), getHeight());
 		img_box = OutilsImage.lireImageEtRedimensionner("box.png", 150, 150);
+		img_trash = OutilsImage.lireImageEtRedimensionner("trash.png", 50, 50);
 	}
 
 	@Override
@@ -118,6 +120,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		}
 		g2d.translate(0, getHeight());
 		
+		g2d.translate(0, -100);
+		g2d.drawImage(img_trash, null, getFocusCycleRootAncestor());
 		trashAJeter.dessiner(g2d);
 
 		for (int j = 0; j < listPoubelles.size(); j++) {
