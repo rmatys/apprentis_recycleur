@@ -33,7 +33,7 @@ public class Poubelles implements Selectionnable, Dessinable {
 		this.idType = id;
 		
 		double initPosX = 70;
-		double initPosY = 70;
+		double initPosY = 80 ;
 		point = new Point2D.Double(initPosX + 140 * id.ordinal(), initPosY);
 	}
 	
