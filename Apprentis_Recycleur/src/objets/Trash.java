@@ -30,6 +30,10 @@ public class Trash implements Selectionnable, Dessinable {
 		this.image = image;
 	}
 	
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
 	@Override
 	public void dessiner(Graphics2D g2d, double pixelsParMetre) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();
