@@ -91,7 +91,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 			poubelle.dessiner(g2d);
 			
 			// Caroline Houle professeur en SIM au collège de Maisonneuve
-			Image img = OutilsImage.lireImage("bin1.jpeg");
+			Image img = OutilsImage.lireImage("bin" + (poubelle.getId().ordinal() + 1) +".jpeg");
 			
 			g2d.drawImage(img, null, getFocusCycleRootAncestor());
 			
