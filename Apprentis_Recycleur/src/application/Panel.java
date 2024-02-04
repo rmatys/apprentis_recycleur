@@ -31,6 +31,8 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean falling = false;
 
 	private int iterDepuisChute = 0;
+	
+	public Systems systeme = new Systems();
 
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
 	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);

@@ -22,7 +22,7 @@ public class Systems {
         BIO, VERRE, CARTON, PLASTIQUE, ELECTRONIQUE, METAL, DECHET;
     }
 	
-	public static int nbrTrashAjouter = 0;
+	public int nbrTrashAjouter = 0;
 	
 	public ArrayList<Trash> dechetsTableau = new ArrayList<>(); 
 	
@@ -84,7 +84,7 @@ public class Systems {
     }
     }
 	
-	public static void ajouterPoubelles(Panel pan, int nbrPoubelles) {
+	public void ajouterPoubelles(Panel pan, int nbrPoubelles) {
 		for(TypePoubelle type: TypePoubelle.values()) {
 			Poubelles poubelle = new Poubelles("bin" + type.ordinal(), type);
 			pan.listPoubelles.add(poubelle);
@@ -175,7 +175,7 @@ public class Systems {
 		donnees.enleverDechet();
 	}
 
-	public static void ajouterTrash(Panel pan) {
+	public  void ajouterTrash(Panel pan) {
 		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);
 		pan.trashAJeter = trash;
 		

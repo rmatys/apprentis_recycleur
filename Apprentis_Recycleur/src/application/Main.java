@@ -45,8 +45,8 @@ public class Main extends JFrame {
 		panel.setBounds(0, 0, getWidth() - 200, getHeight()-32);
 		contentPane.add(panel);
 		
-		Systems.ajouterPoubelles(panel, 1);
+		systeme.ajouterPoubelles(panel, 1);
 		
-		Systems.ajouterTrash(panel);
+		systeme.ajouterTrash(panel);
 	}
 }
