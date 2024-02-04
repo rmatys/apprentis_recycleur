@@ -35,7 +35,9 @@ public class Panel extends JPanel implements Runnable, Serializable {
 		addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				System.out.println(e.getX() + " " + e.getY());
+				trashAJeter.setPoint(e.getX(), -e.getY() + getHeight());
+				
+				repaint();
 			}
 		});
 		addMouseListener(new MouseAdapter() {

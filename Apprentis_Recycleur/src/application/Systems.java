@@ -19,5 +19,7 @@ public class Systems {
 		Trash trash = new Trash("trash" + nbrTrashAjouter, 0);
 		pan.trashAJeter = trash;
 		
+		nbrTrashAjouter += 1;
+		
 	}
 }

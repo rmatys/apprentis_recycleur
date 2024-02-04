@@ -56,6 +56,18 @@ public class Trash implements Selectionnable, Dessinable {
 		return this.image;
 	}
 	
+	public void setPoint(Point2D.Double point) {
+		this.point = point;
+	}
+	
+	public void setPoint(double x, double y) {
+		this.point = new Point2D.Double(x, y);
+	}
+	
+	public Point2D.Double getPoint() {
+		return this.point;
+	}
+	
 	@Override
 	public void dessiner(Graphics2D g2d) {
 		Graphics2D g2dPrive = (Graphics2D) g2d.create();
