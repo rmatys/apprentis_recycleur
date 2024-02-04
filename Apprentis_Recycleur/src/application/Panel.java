@@ -26,7 +26,7 @@ public class Panel extends JPanel implements Runnable, Serializable {
 	private boolean enCoursAnim = false;
 	
 	public ArrayList<Poubelles> listPoubelles = new ArrayList<Poubelles>();
-	public Trash trashAJeter = new Trash("", -1);
+	public Trash trashAJeter = new Trash("", Systems.TypeDechet.BIO);
 
 	/**
 	 * Create the panel.
