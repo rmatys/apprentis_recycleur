@@ -7,6 +7,8 @@ import objets.*;
 
 public class Systems {
 	
+	DonneesJeu donnees = new DonneesJeu(0,5,25);
+	
 	public enum TypeDechet {
         BATTERIE, BIO, VERRE, CARTON, VETEMENTS, METAL, PAPIER, PLASTIQUE_DUR, ORDINATEUR, DECHET, PLASTIQUE_MOU, NOURRITURE_DECHET;
     }
@@ -24,6 +26,17 @@ public class Systems {
 		}
 	}
 
+	public void verifierCompatibilite(Poubelles poubelle, Trash dechet) {
+		
+	}
+	
+	public void succes() {
+		
+	}
+	
+	public void echec() {
+		
+	}
 
 	public static void ajouterTrash(Panel pan) {
 		Trash trash = new Trash("trash" + nbrTrashAjouter, TypeDechet.BIO);

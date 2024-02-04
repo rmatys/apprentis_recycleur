@@ -82,7 +82,6 @@ public class Poubelles implements Selectionnable, Dessinable {
 		g2dPrive.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		g2dPrive.setColor(Color.yellow);
 		g2dPrive.drawString("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", (int)point.getX(), (int)point.getY());
-		System.out.println(this.nom);
 	}
 
 	@Override
