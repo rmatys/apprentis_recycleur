@@ -11,7 +11,7 @@ import application.System;
 public class Main extends JFrame {
 
 	private JPanel contentPane;
-//MAXENCE
+
 	/**
 	 * Launch the application.
 	 */
@@ -44,6 +44,6 @@ public class Main extends JFrame {
 		panel.setBounds(10, 10, 853, 484);
 		contentPane.add(panel);
 		
-		System.ajouterPoubelles();
+		System.ajouterPoubelles(panel, 3);
 	}
 }
