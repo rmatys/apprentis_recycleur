@@ -7,11 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import application.Systems;
+import javax.swing.JLabel;
 
 public class Main extends JFrame {
 
-	private JPanel contentPane;
-
+	private JPanel contentPane=new JPanel();
+	Panel panel = new Panel();
 	/**
 	 * Launch the application.
 	 */
@@ -20,7 +21,7 @@ public class Main extends JFrame {
 			public void run() {
 				try {
 					Main frame = new Main();
-//					frame.setUndecorated(true);
+					//					frame.setUndecorated(true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,14 +36,12 @@ public class Main extends JFrame {
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 1200, 700);
-		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Panel panel = new Panel();
-		panel.setBounds(0, 0, getWidth() - 200, getHeight() - 50);
+		panel.setBounds(0, 0, getWidth() - 200, getHeight()-32);
 		contentPane.add(panel);
 		
 		Systems.ajouterPoubelles(panel, 1);
